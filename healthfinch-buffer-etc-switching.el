@@ -1,10 +1,12 @@
 ;;; Finding and switching among buffers, windows, files, frames - gross-level movement
 
+;;;; recentf
+(recentf-mode t)
+(setq-default recentf-max-menu-items 40)
+(setq-default recentf-menu-filter 'recentf-sort-basenames-ascending)
 
 ;;; IDO
 (require 'ido)
-
-;;;; ido
 (ido-mode t)
 (ido-everywhere t)
 (setq ido-enable-flex-matching t)
@@ -39,6 +41,12 @@
 ;;;; smex
 
 (add-hook 'after-init-hook 'smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-c M-x") 'smex-update-and-run)
+;; This is your old M-x.
+(global-set-key (kbd "M-z") 'execute-extended-command)
+
 
 
 (provide 'healthfinch-buffer-etc-switching)
