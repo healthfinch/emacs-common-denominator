@@ -44,3 +44,13 @@
          ("M-z" . execute-extended-command)))  ; The original M-x
 
 (provide 'healthfinch-buffer-etc-switching)
+
+
+;;; ag - use the `ag` command to pop up an error-style buffer.
+;;; M-x ag-project searches everything under the Git root.
+;;; M-x ag searches from the buffer's current directory.
+;;; Thereafter, "C-x `" will pop your cursor to each location in turn.
+;;; Alternately, you can navigate to a line in the buffer and hit RET. 
+;;; That also sets the location for "C-x `".
+(use-package ag
+  :commands (ag-project ag))
