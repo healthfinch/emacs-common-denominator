@@ -19,8 +19,9 @@ with likely choices. You don't need to do anything; this just augments existing
 commands.
 
 Use **ag(1)** to search via `M-x ag` and `M-x ag-project`.
-    +  M-x ag-project searches everything under the Git root.
-    +  M-x ag searches from the buffer's current directory.
-    +  Thereafter, "C-x `" will pop your cursor to each location in turn.
-    +  Alternately, you can navigate to a line in the buffer and hit RET. 
-       That also sets the location for "C-x `".
+
+*  M-x ag-project searches everything under the Git root.
+*  M-x ag searches from the buffer's current directory.
+*  Thereafter, "C-x `" will pop your cursor to each location in turn.
+*  Alternately, you can navigate to a line in the buffer and hit RET. 
+   That also sets the location for "C-x `".
