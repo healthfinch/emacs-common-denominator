@@ -1,52 +1,46 @@
 ;;; Finding and switching among buffers, windows, files, frames - gross-level movement
 
-;;;; recentf
-(recentf-mode t)
+;;;; recentf - maintain a menu of recently-used files. The menu is displayed for commands like `find-file`.
+(recentf-mode t)  
 (setq-default recentf-max-menu-items 40)
-(setq-default recentf-menu-filter 'recentf-sort-basenames-ascending)
-
-;;; IDO
-(require 'ido)
-(ido-mode t)
-(ido-everywhere t)
-(setq ido-enable-flex-matching t)
-(setq ido-auto-merge-work-directories-length nil)
-(setq ido-create-new-buffer 'always)
-(setq ido-everywhere t)
-(setq ido-max-prospects 10)
-(setq ido-read-file-name-non-ido nil)
-(setq ido-use-filename-at-point nil)
-(setq ido-use-virtual-buffers t)
+(setq-default recentf-menu-filter 'recentf-sort-basenames-ascending) ; sort by filename, ignoring directory part.
 
 
-(defun mp-ido-hook ()
-  (define-key ido-completion-map (kbd "C-h") 'ido-delete-backward-updir)
-  (define-key ido-completion-map (kbd "C-w") 'ido-delete-backward-word-updir)
-  (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
-  (define-key ido-completion-map (kbd "C-p") 'ido-prev-match)
-  (define-key ido-completion-map [tab] 'ido-complete))
+;;; IDO: -I-nteractively -DO- things with buffers and files (such as easily get to the most recently used ones).
+(use-package ido-ubiquitous
+  :ensure t
+  :init (require 'ido)
+  :config (use-package ido-vertical-mode)
+          (ido-mode t)                           ; globally change file buffer commands to ido versions
+          (ido-everywhere t)                     ; seems same as above
+          (ido-ubiquitous-mode t)                ; change completion commands to provide choices
+          (ido-vertical-mode t)                  ; display choices vertically
 
-(add-hook 'ido-setup-hook 'mp-ido-hook)
+          (setq ido-enable-flex-matching t)      ; "fob" will match "foobar" - gaps allowed
+          ; (setq ido-auto-merge-work-directories-length nil)  ; what does this actually do?
+          (setq ido-use-virtual-buffers t)       ; remember buffers that have been closed
 
+          (setq ido-ubiquitous-command-exceptions '(execute-extended-command)) ; defer to smex
 
-(after 'ido-ubiquitous-autoloads (ido-ubiquitous-mode t))
-;(after 'ido-ubiquitous (ido-ubiquitous-disable-in evil-ex))
+          (add-hook 'ido-setup-hook (lambda ()
+                                      ;; step through list with C-n C-p,
+                                      ;; DEL or C-h to delete a character or directory
+                                      ;; M-DEL or C-w to delete word or directory
+                                      ;; RETURN to select top choice.
+                                      (define-key ido-completion-map (kbd "C-h") 'ido-delete-backward-updir)
+                                      (define-key ido-completion-map (kbd "C-w") 'ido-delete-backward-word-updir)
+                                      (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
+                                      (define-key ido-completion-map (kbd "C-p") 'ido-prev-match)
+                                      (define-key ido-completion-map [tab] 'ido-complete))))
 
-(setq ido-ubiquitous-command-exceptions '(execute-extended-command))
-(setq ido-ubiquitous-function-exceptions '())
+;;;; smex: extend M-x
 
-(after 'ido-vertical-mode-autoloads
-  (ido-vertical-mode t))
-
-;;;; smex
-
-(add-hook 'after-init-hook 'smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-(global-set-key (kbd "C-c M-x") 'smex-update-and-run)
-;; This is your old M-x.
-(global-set-key (kbd "M-z") 'execute-extended-command)
-
-
+(use-package smex
+  :ensure t
+  :init (add-hook 'after-init-hook 'smex-initialize)
+  :config
+  :bind (("M-x" . smex)                        ; Ordinary M-x but with a menu prepopulated with likely commands.
+         ("M-X" . smex-major-mode-commands)    ; As above, but commands are limited to buffer's major mode.
+         ("M-z" . execute-extended-command)))  ; The original M-x
 
 (provide 'healthfinch-buffer-etc-switching)
