@@ -13,7 +13,7 @@
 
 (require 'healthfinch-defaults)
 (require 'healthfinch-buffer-etc-switching)
-
+(require 'healthfinch-autocomplete)
 
 (provide 'healthfinch-init)
 
