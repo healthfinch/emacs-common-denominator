@@ -43,8 +43,6 @@
          ("M-X" . smex-major-mode-commands)    ; As above, but commands are limited to buffer's major mode.
          ("M-z" . execute-extended-command)))  ; The original M-x
 
-(provide 'healthfinch-buffer-etc-switching)
-
 
 ;;; ag - use the `ag` command to pop up an error-style buffer.
 ;;; M-x ag-project searches everything under the Git root.
@@ -54,3 +52,8 @@
 ;;; That also sets the location for "C-x `".
 (use-package ag
   :commands (ag-project ag))
+
+
+
+(provide 'healthfinch-buffer-etc-switching)
+
