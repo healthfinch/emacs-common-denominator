@@ -24,7 +24,7 @@ existing commands.
 Use [**ag(1)**](http://geoff.greer.fm/ag/) to **search files** via `M-x ag` and `M-x ag-project`.
 
 *  `M-x ag-project` searches everything under the Git root.
-*  `M-x ag` searches from the buffer's current directory.
+*  `M-x ag` searches from a directory of your choice (defaulting to the buffer's current directory).
 *  Thereafter, "C-x `" (backtick) will pop your cursor to each location in turn.
 *  Alternately, you can navigate to a line in the buffer and hit RET. 
    That also sets the location for "C-x `".
