@@ -36,7 +36,7 @@ automatic offers to **autocomplete**. The offer is in a list. You can move
 through the list with `M-n` and `M-p` (*not* `C-n` and `C-p`) or the arrow keys. 
 You can select - for example - the 5th entry with `M-5`.
 
-`hippie-expand` provides **autocompleting** based on words it's seen in
+[`hippie-expand`](http://www.emacswiki.org/emacs/HippieExpand) provides **autocompleting** based on words it's seen in
 this and other buffers. It seems to pick up words Company-mode
 doesn't. Complete the word you're typing with [f8].
 
