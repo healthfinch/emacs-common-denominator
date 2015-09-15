@@ -30,11 +30,11 @@ Use [**ag(1)**](http://geoff.greer.fm/ag/) to search via `M-x ag` and `M-x ag-pr
    That also sets the location for "C-x `".
 
 [`company-mode`](http://company-mode.github.io/) is used to provide
-automatic offers to autocomplete. The offer is in a list. You can move
-through the list with `M-n` and `M-p` (*not* `C-n` and `C-p`) or
-select - for example - the 5th entry with `M-5`.
+automatic offers to **autocomplete**. The offer is in a list. You can move
+through the list with `M-n` and `M-p` (*not* `C-n` and `C-p`) or the arrow keys. 
+You can select - for example - the 5th entry with `M-5`.
 
-`hippie-expand` provides autocompleting based on words it's seen in
+`hippie-expand` provides **autocompleting** based on words it's seen in
 this and other buffers. It seems to pick up words Company-mode
 doesn't. Complete the word you're typing with [f8].
 
