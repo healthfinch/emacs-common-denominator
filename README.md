@@ -21,13 +21,15 @@ Uses [ido](http://www.emacswiki.org/emacs/InteractivelyDoThings) and
 likely choices. You don't need to do anything; this just augments
 existing commands.
 
-Use [**ag(1)**](http://geoff.greer.fm/ag/) to search via `M-x ag` and `M-x ag-project`.
+Use [**ag(1)**](http://geoff.greer.fm/ag/) to **search files** via `M-x ag` and `M-x ag-project`.
 
 *  `M-x ag-project` searches everything under the Git root.
 *  `M-x ag` searches from the buffer's current directory.
 *  Thereafter, "C-x `" will pop your cursor to each location in turn.
 *  Alternately, you can navigate to a line in the buffer and hit RET. 
    That also sets the location for "C-x `".
+
+Install `ag` with `brew install ag`. 
 
 [`company-mode`](http://company-mode.github.io/) is used to provide
 automatic offers to **autocomplete**. The offer is in a list. You can move
