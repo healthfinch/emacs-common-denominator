@@ -10,7 +10,7 @@
 (use-package ido-ubiquitous
   :ensure t
   :init (require 'ido)
-  :config (use-package ido-vertical-mode)
+  :config (use-package ido-vertical-mode :ensure t)
           (ido-mode t)                           ; globally change file buffer commands to ido versions
           (ido-everywhere t)                     ; seems same as above
           (ido-ubiquitous-mode t)                ; change completion commands to provide choices
@@ -51,6 +51,7 @@
 ;;; Alternately, you can navigate to a line in the buffer and hit RET. 
 ;;; That also sets the location for "C-x `".
 (use-package ag
+  :ensure t
   :commands (ag-project ag))
 
 
