@@ -14,6 +14,7 @@
 (require 'healthfinch-defaults)
 (require 'healthfinch-buffer-etc-switching)
 (require 'healthfinch-autocomplete)
+(require 'healthfinch-project)
 
 (provide 'healthfinch-init)
 
