@@ -8,6 +8,13 @@
        (setq delete-by-moving-to-trash t)
        (setq trash-directory "~/.Trash/")))
 
+(require 'ws-butler)
+(add-hook 'ruby-mode-hook 'ws-butler-mode)
+(add-hook 'clojure-mode-hook 'ws-butler-mode)
 
+(use-package seq
+  :ensure t)
+(require 'beacon)
+(beacon-mode 1)
 
 (provide 'healthfinch-defaults)
